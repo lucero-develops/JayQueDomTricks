@@ -1,30 +1,36 @@
 /*
-$('.eaxmple').each(function(){
-	$(this).text();
-})
+A function passed into the jQuery object runs on document.ready,
+ which occurs after the DOM has been loaded.
 
-returns text of each element 
+Why is this useful?
+External JavaScript files in the <head> of a document
+are generally downloaded earlier than JavaScript files included in the <body>. 
+JavaScript files are also executed immediately at their location in the document,
+ which means they can't access any DOM elements that come after their <script> tag in the DOM. 
+ This leads to some interesting situations.
 
-For this quiz, use jQuery's each() method to iterate through the <p>s,
-calculate the length of each one, and add each length to the end of each <p>.
+Imagine you're building a website and you've got a script you want to run against some
+DOM elements in the page. If you include your script in the <head> normally, 
+ it will run as soon as it's downloaded, which will occur before the DOM has built the
+elements you want your script to run against. So your script wouldn't be able to do anything.
 
-Also, make sure you don't change the text inside each <p> except to add the length, otherwise your
-length numbers won't be correct!
-*/
+You could include your script at the bottom of the <body>,
+but that would mean that the download could potentially start later in the load process,
+slowing down the initial page render.
 
-// Your code goes here!
+So what can you do?
 
-function numberAdder(){
-	var text, number;
+Pass your function into the jQuery object, like so:
 
-	text = $(this).text();
-
-	number = text.length;
-
-	$(this).text(text + " " + number);
+function someFunction() {
+    // Do interesting things
 }
+$(someFunction)
+or
 
-$('p').each(numberAdder);
-
-
-
+$(function(){
+    // Do interesting things
+})
+Now, you can include your script in the <head> and it won't 
+run until the DOM has been built and the elements that you want to manipulate are on the page.
+*/
