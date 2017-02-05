@@ -1,11 +1,17 @@
 /*
-For this quiz, use a jQuery class selector and featuredArticle variable to 
-toggle the 'featured' class!
+For this quiz, remove the class 'featured' from Article #2 and add it to Article #3!
+
+You must use jQuery's toggleClass method!
 */
 
-// don't change this variable!
-var featuredArticle;
+// don't change these variable!
+var article2, article3;
 
-featuredArticle = $('.featured');
-featuredArticle.toggleClass('featured');
+// your code goes here!
+article2 = $('.featured');
 
+article3 = article2.next();
+
+article2.toggleClass('featured');
+
+article3.toggleClass('featured');
