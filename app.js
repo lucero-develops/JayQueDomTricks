@@ -1,36 +1,34 @@
 /*
-A function passed into the jQuery object runs on document.ready,
- which occurs after the DOM has been loaded.
 
-Why is this useful?
-External JavaScript files in the <head> of a document
-are generally downloaded earlier than JavaScript files included in the <body>. 
-JavaScript files are also executed immediately at their location in the document,
- which means they can't access any DOM elements that come after their <script> tag in the DOM. 
- This leads to some interesting situations.
+For this quiz, can you use this script, which is linked in the <head> of index.html,
+to change the boring placeholder image to a picture of a cute animal?
 
-Imagine you're building a website and you've got a script you want to run against some
-DOM elements in the page. If you include your script in the <head> normally, 
- it will run as soon as it's downloaded, which will occur before the DOM has built the
-elements you want your script to run against. So your script wouldn't be able to do anything.
+Remember, you'll need to pass a function into the jQuery object to run
+when the document is ready.
 
-You could include your script at the bottom of the <body>,
-but that would mean that the download could potentially start later in the load process,
-slowing down the initial page render.
+Unfortunately, placepuppy is no longer available. Here's a link to a random
+animal image on lorempixel.com:
+http://lorempixel.com/350/150/animals/
 
-So what can you do?
+Good luck!
 
-Pass your function into the jQuery object, like so:
-
-function someFunction() {
-    // Do interesting things
-}
-$(someFunction)
-or
-
-$(function(){
-    // Do interesting things
-})
-Now, you can include your script in the <head> and it won't 
-run until the DOM has been built and the elements that you want to manipulate are on the page.
 */
+
+$(function() {
+  $('img').attr('src', 'http://lorempixel.com/350/150/animals');
+})
+
+/*
+I'm simply starting with the jQuery object and passing it an anonymous function.
+
+The anonymous function changes the src of the one img on the page to the URL provided.
+(Remember, $('img') grabs all of the images on the page, so this is a very bad selector. 
+It works in this case because there's only one <img>, but normally you should use a much more
+ specific selector.)
+
+If I hadn't wrapped my .attr() function in the jQuery object, it would run as soon as it's loaded
+in the <head> of the document, which occurs before the <img> tag appears on the page. So nothing 
+would happen.
+
+But by wrapping it up in the jQuery object, it runs when the DOM is ready and
+I get to see a cute puppy instead!
