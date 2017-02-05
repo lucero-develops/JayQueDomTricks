@@ -1,32 +1,30 @@
 /*
-For this quiz, you'll need to add to the DOM tree that already exists.
+$('.eaxmple').each(function(){
+	$(this).text();
+})
 
-'#family2' should be a sibling of and come after '#family1'. '#bruce' should be the only immediate child
-of '#family2'. '#bruce' should have two <div>s as children, '#madison' and '#hunter'.
+returns text of each element 
+
+For this quiz, use jQuery's each() method to iterate through the <p>s,
+calculate the length of each one, and add each length to the end of each <p>.
+
+Also, make sure you don't change the text inside each <p> except to add the length, otherwise your
+length numbers won't be correct!
 */
+
 // Your code goes here!
- 
-var family1, family2, bruce, madison, hunter;
 
-family1 = $('#family1');
+function numberAdder(){
+	var text, number;
 
-family2 = $('<div id="family2"><h1>Family 2</h1></div>');
+	text = $(this).text();
 
-bruce = $('<div id ="bruce"><h2>Bruce</h2></div>');
+	number = text.length;
 
-madison = $('<div id ="madison"><h3>Madison</h3></div>');
+	$(this).text(text + " " + number);
+}
 
-hunter = $('<div id ="hunter"><h3>Hunter</h3></div>');
-
-family2.insertAfter(family1);
-
-family2.append(bruce);
-
-bruce.append(madison);
-
-bruce.append(hunter);
-
-
+$('p').each(numberAdder);
 
 
 
