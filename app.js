@@ -1,17 +1,18 @@
 /*
-For this quiz, remove the class 'featured' from Article #2 and add it to Article #3!
+For this quiz, set the href of the <a> in the first nav item to "#1".
 
-You must use jQuery's toggleClass method!
+You must use jQuery's attr() method!
 */
 
-// don't change these variable!
-var article2, article3;
+var navList;
+var firstItem;
+var link;
 
-// your code goes here!
-article2 = $('.featured');
+navList = $('.nav-list');
 
-article3 = article2.next();
+firstItem = navList.childern().first();
 
-article2.toggleClass('featured');
+link = firstItem.find('a');
 
-article3.toggleClass('featured');
+link.attr('href', '#1');
+
